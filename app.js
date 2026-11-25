@@ -113,7 +113,8 @@ function getView() {
 document.getElementById("sort").addEventListener("change", applySort);
 
 document.querySelector(".board").addEventListener("click", (e) => {
-    console.log(this, e.target);
+    //첫 번째 값(this)은 <div class="board" id="board">...</div>으로 잡힘
+    //두 번째 값(e.target)은 <button class="like liked" type="button">♥</button>으로 그대로 잡힘
     if
         (e.target.classList.contains("like")) { e.target.classList.toggle("liked"); updateLikeCount(); }
 });
@@ -122,3 +123,7 @@ function updateLikeCount() {
     document.getElementById("likeCount").textContent =
     document.querySelectorAll(".liked").length;
 }
+
+document.getElementById("q").addEventListener("keydown", (e) => { if (e.key === "Escape") 
+{ e.target.value = ""; renderCards(getView()); } });
+
